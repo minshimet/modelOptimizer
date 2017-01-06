@@ -1,0 +1,11 @@
+Package: [[name]]
+Version: [[version]]
+Provides: model-optimizer
+Conflicts: model-optimizer
+Section: contrib/misc
+Priority: optional
+Architecture: all
+Depends: openjdk-8-jre
+Maintainer: Min Shi <mins@met.no>
+Description: Intelligent tools to optimize models
+Distribution: development
