@@ -71,14 +71,13 @@ public class ModelOptimizer extends AbstractProblem {
 
 	@Override
 	public void evaluate(Solution solution) {
-		System.out.println("Population number="+popNum);
-		popNum=0;
+		System.out.println("evaluat solution...");
 		double[] x = EncodingUtils.getReal(solution);
 		for (int i = 0; i < getNumberOfVariables(); i++) {
 			optimizationProperties.getParameters().get(i).setValue(x[i]);
 			System.out.print(x[i] + ",");
 		}
-		performEvaluate(solution);
+		//performEvaluate(solution);
 	}
 	
 	public void evaluate(String[] values) {
@@ -232,7 +231,8 @@ public class ModelOptimizer extends AbstractProblem {
 			solution.setVariable(i, new RealVariable(optimizationProperties.getParameters().get(i).getLowBound(),
 					optimizationProperties.getParameters().get(i).getUpBound()));
 		}
-		popNum++;
+		System.out.println("new solution: "+popNum++);
+		
 		return solution;
 	}
 }

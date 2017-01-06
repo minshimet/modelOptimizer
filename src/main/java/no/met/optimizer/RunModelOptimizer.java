@@ -23,8 +23,9 @@ public class RunModelOptimizer {
 			System.exit(1);
 		}
 		int evalutationTimes = Integer.parseInt(p.getProperty("evaluation_times", "100"));
-		NondominatedPopulation result = new Executor().withAlgorithm("NSGAII").withProblemClass(ModelOptimizer.class,args[0])
-				.withMaxEvaluations(evalutationTimes).run();
+		String algorithm=p.getProperty("algorithm","NSGAII");
+		NondominatedPopulation result = new Executor().withAlgorithm(algorithm).withProblemClass(ModelOptimizer.class,args[0])
+				.withMaxEvaluations(evalutationTimes).distributeOnAllCores().run();
 		System.out.println("=====================Final results from optimizer:=====================");
 		for (Solution solution : result) {
 			for (int i=0;i<solution.getNumberOfVariables();i++) {
